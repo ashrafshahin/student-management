@@ -2,7 +2,7 @@ require('dotenv').config();
 console.log(`Students ${process.env.STUDENT}`)
 const express = require('express');
 const { default: mongoose } = require('mongoose');
-const dbConnection = require('./config/dbConnection');
+const dbConnection = require('./src/config/dbConnection');
 
 // basic way to connect database... username-password dete hobe
 // mongoose.connect('mongodb+srv://username:password@clustershahin.nicn5ni.mongodb.net/student-management?appName=ClusterShahin').then(() => {

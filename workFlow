@@ -5,3 +5,13 @@ what i am doing here:
 3. dotenv install, require it on top of index.js
 4. .env file, console.log this as well...
 5. .gitignore file, added from hr-manager project... seems perfect...
+
+
+ database config connection work:
+ 1. install mongodb
+ 2. install mongoose
+ 3. config folder e db file niye connect to .env
+ 4. require gula and export gula daikho...
+ 
+
+
