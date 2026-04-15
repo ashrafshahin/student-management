@@ -1,0 +1,8 @@
+what i am doing here:
+
+1. express install, and wrote basic codes in index.js 
+2. nodemon install, package.json start and dev updated...
+3. dotenv install, require it on top of index.js
+4. .env file, console.log this as well...
+5. .gitignore file, https://github.com/expressjs/express/blob/master/.gitignore copied from here
+
