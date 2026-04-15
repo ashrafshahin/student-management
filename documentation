@@ -1,2 +1,18 @@
-gitignore copied from here
-https://github.com/expressjs/express/blob/master/.gitignore
+The following are all the valid SchemaTypes in Mongoose. Mongoose plugins can also add custom SchemaTypes like int32. Check out Mongoose's plugins search to find plugins.
+
+String
+Number
+Date
+Buffer
+Boolean
+Mixed
+Union
+ObjectId
+Array
+Decimal128
+Map
+Schema
+UUID
+BigInt
+Double
+Int32
