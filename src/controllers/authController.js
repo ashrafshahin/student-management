@@ -89,4 +89,19 @@ const loginUser = async (req, res) => {
     
 };
 
-module.exports = { registrationController, loginUser}
+const logoutUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const existingUser = await User.findById(id);
+        existingUser.isLogin = false;
+        existingUser.save(); // database e save hobe..
+        res.status(200).json({
+            success: true,
+            message: "Log Out Successully..."
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Server Gone mad..." });
+    }
+};
+
+module.exports = { registrationController, loginUser, logoutUser,}
