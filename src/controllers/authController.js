@@ -10,6 +10,13 @@ const registrationController = async (req, res) => {
     if (existingUser) {
         res.status(409).json({success:false, message: "Email already exists..."})
     }
+
+    // password rejex before bcrypt..//
+    const passwordRejex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/;
+    if (!passwordRejex.test(password)) {
+        return res.status(400).json({ success: false, message: "Please enter a stronger password..." });
+    }
+
     // password bcrypt korbo
     const hashPassword = bcrypt.hashSync(password, 10);
     console.log(hashPassword, "hash chack...");

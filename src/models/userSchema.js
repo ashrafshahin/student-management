@@ -14,12 +14,16 @@ const userSchema = new Schema({
         required: [true, 'Email is required'],
         unique: true,
         lowercase: true,
-        match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address']
+        trim:true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
+       
     },
     password: {
         type: String,
         required: true,
-        minlength: 8
+        minlength: 8,
+        // password rejex registrationController - authController-e bcrypt er age korbo
+        // match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/, 'Please enter a stronger password...'],
     }
     
 
