@@ -24,6 +24,10 @@ const userSchema = new Schema({
         minlength: 8,
         // password rejex registrationController - authController-e bcrypt er age korbo
         // match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/, 'Please enter a stronger password...'],
+    },
+    isLogin: {
+        type: Boolean,
+        default: false,
     }
     
 
