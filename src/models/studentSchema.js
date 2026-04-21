@@ -4,7 +4,8 @@ const { Schema } = mongoose
 const studentProfileSchema = new Schema({
     studentId: {
         type: String,
-        
+        required: true,
+        unique: true,
     },
     name: {
         type: String,
@@ -13,7 +14,7 @@ const studentProfileSchema = new Schema({
     stuRoll: {
         type: String,
         required: true,
-        unique: true,
+        
     },
     stuClass: {
         type: String,
@@ -77,4 +78,4 @@ const studentProfileSchema = new Schema({
 );
 
 module.exports = mongoose.model('Profile', studentProfileSchema);
-console.log(studentProfileSchema, "schema chekkkk");
+// console.log(studentProfileSchema, "schema chekkkk");

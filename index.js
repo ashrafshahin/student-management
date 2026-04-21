@@ -17,10 +17,12 @@ dbConnection()
 
 app.use(express.json())
 
+//auth api's
 app.post('/registration', registrationController)
 app.post('/login', loginUser)
 app.post('/logout/:id', logoutUser)
 
+// profile api's
 app.post('/createprofile', createProfile)
 
 
