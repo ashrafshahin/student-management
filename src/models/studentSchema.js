@@ -74,8 +74,7 @@ const studentProfileSchema = new Schema({
         },
     }],
     
-}, { timestamps: true }
-);
+});
 
 module.exports = mongoose.model('Profile', studentProfileSchema);
 // console.log(studentProfileSchema, "schema chekkkk");

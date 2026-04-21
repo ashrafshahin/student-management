@@ -50,4 +50,18 @@ const createProfile = async (req, res) => {
     console.log(error);
 }
 
-module.exports = {createProfile, }
+const getAllProfile = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await Profile.find({ id });
+        if (data) {
+            res.status(200).json({ success: true, message: "All Students Profiles...", data: data });
+        } else {
+            res.status(400).json({ success: false, message: "Students Profiles NOT found..." })
+        }
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." }); 
+    }
+}
+
+module.exports = {createProfile, getAllProfile, }
