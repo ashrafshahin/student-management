@@ -27,6 +27,7 @@ const studentProfileSchema = new Schema({
             mother: { type: String, required: true },
         },
         required: true,
+        _id:false,
     },
     gender: {
         type: String,
@@ -44,6 +45,7 @@ const studentProfileSchema = new Schema({
             mother: { type: String, required: true },
         },
         required: true,
+        _id:false,
     },
     email: {
         type: String,
@@ -65,6 +67,7 @@ const studentProfileSchema = new Schema({
             type: String,
             trim: true,
             required: true,
+            
         },
         marks: {
             type: Number,
@@ -73,6 +76,13 @@ const studentProfileSchema = new Schema({
             max: 100,
         },
     }],
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+    },
     
 });
 
