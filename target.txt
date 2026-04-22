@@ -1,0 +1,5 @@
+backend student management
+frontend link kora
+cloud live on a AWS or hosting live domain 
+readme 
+documantation
