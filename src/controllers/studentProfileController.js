@@ -86,7 +86,7 @@ const updateProfile = async (req, res) => {
     const { id } = req.params;
     try {
         // const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { new: true });
-        const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { returnDocument: after });
+        const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { returnDocument: 'after' });
         if (data) {
             res.status(200).json({
                 success: true,
@@ -103,4 +103,29 @@ const updateProfile = async (req, res) => {
     }
 }
 
-module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile,   }
+const holdProfile = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const existingProfile = await Profile.findById(id);
+        existingProfile.isHold = true;
+        existingProfile.save();
+        res.status(200).json({ success: true, message: `${existingProfile.name} Profile has been Restricted...` })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." });
+        // console.log(error);
+    }
+};
+const activateProfile = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const existingProfile = await Profile.findById(id);
+        existingProfile.isHold = false;
+        existingProfile.save();
+        res.status(200).json({ success: true, message: `${existingProfile.name} Profile has been Activated...` })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." });
+        // console.log(error);
+    }
+};
+
+module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile, holdProfile, activateProfile,   }

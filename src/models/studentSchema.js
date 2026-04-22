@@ -83,6 +83,10 @@ const studentProfileSchema = new Schema({
     updatedAt: {
         type: Date,
     },
+    isHold: {
+        type: Boolean,
+        default: false,
+    }
     
 });
 

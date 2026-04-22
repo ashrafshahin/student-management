@@ -20,7 +20,7 @@ findById(id) 👉 internally use করে { _id: id }
 কিন্তু তুমি লিখছো { id } 👉 যেটা database এ নেই
 
 database theke only id can not get data... findById(id) is Correct but findOneAndUpdate({ id }) is Wrong here Correct is findOneAndUpdate({ _id: id }), _id means database Identification... 3 things will go- 
-{ _id: id }, req.body, { returnDocument: after } ... update done...
+{ _id: id }, req.body, { returnDocument: 'after' } ... update done...
 
 ======= ===== ==== ===
 google search: 
