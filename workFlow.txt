@@ -1,0 +1,54 @@
+=== Update work: =====
+terminal suggestion for update documants :
+(node:8619) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8619) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+
+ // const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { new: true });
+        const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { returnDocument: after });
+
+  ====   //   {new:true} na likhe { returnDocument: after } likte bole r ki...====
+
+
+==== Profile by ID  ==== vs ==== update by ID =====
+findById(id) দিলে কাজ করে √
+কিন্তু findOneAndUpdate({ id }) দিলে কাজ করে না x
+      findOneAndUpdate({ _id: id }) দিলে কাজ করে...√
+
+MongoDB / Mongoose এ:
+findById(id) 👉 internally use করে { _id: id }
+কিন্তু তুমি লিখছো { id } 👉 যেটা database এ নেই
+
+database theke only id can not get data... findById(id) is Correct but findOneAndUpdate({ id }) is Wrong here Correct is findOneAndUpdate({ _id: id }), _id means database Identification... 3 things will go- 
+{ _id: id }, req.body, { returnDocument: after } ... update done...
+
+======= ===== ==== ===
+google search: 
+in mongodb mongoose schema, i have results in array and i am getting extra id for that, why?
+answer: 
+[We can make it false, _id by default gives TRUE, if we write _id:false where we don't need... solved]
+This is default behavior of MongoDB + Mongoose. 
+nested objects or arrays of objects, Mongoose automatically adds an _id to each subdocument.
+
+https://stackoverflow.com/questions/16881832/mongoose-adds-id-to-all-nested-objects
+When creating a document with nested objects (e.g. an array of objects), each object is given its own _id. 
+
+
+
+what i am doing here:
+
+1. express install, and wrote basic codes in index.js 
+2. nodemon install, package.json start and dev updated...
+3. dotenv install, require it on top of index.js
+4. .env file, console.log this as well...
+5. .gitignore file, added from hr-manager project... seems perfect...
+
+
+ database config connection work:
+ 1. install mongodb
+ 2. install mongoose
+ 3. config folder e db file niye connect to .env
+ 4. require gula and export gula daikho...
+ 
+
+

@@ -82,4 +82,25 @@ const getSingleProfile = async (req, res) => {
     }
 };
 
-module.exports = { createProfile, getAllProfile, getSingleProfile,  }
+const updateProfile = async (req, res) => {
+    const { id } = req.params;
+    try {
+        // const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { new: true });
+        const data = await Profile.findByIdAndUpdate({ _id: id }, req.body, { returnDocument: after });
+        if (data) {
+            res.status(200).json({
+                success: true,
+                message: `${data.name} Profile Updated...`,
+                data: data,
+            });
+        } else {
+            res.status(400).json({ success: false, message: "Student Profile Update Failed..." })
+        }
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." }); 
+        console.log(error);
+        
+    }
+}
+
+module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile,   }

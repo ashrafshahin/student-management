@@ -4,7 +4,7 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const dbConnection = require('./src/config/dbConnection');
 const { loginUser, registrationController, logoutUser } = require('./src/controllers/authController');
-const { createProfile, getAllProfile, getSingleProfile,  } = require('./src/controllers/studentProfileController');
+const { createProfile, getAllProfile, getSingleProfile, updateProfile,  } = require('./src/controllers/studentProfileController');
 
 // basic way to connect database... username-password dete hobe
 // mongoose.connect('mongodb+srv://username:password@clustershahin.nicn5ni.mongodb.net/student-management?appName=ClusterShahin').then(() => {
@@ -27,6 +27,8 @@ app.post('/createprofile', createProfile)
 
 app.get('/getallprofiles', getAllProfile)
 app.get('/getsingleprofile/:id', getSingleProfile)
+
+app.post('/updateprofile/:id', updateProfile)
 
 
 
