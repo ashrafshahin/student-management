@@ -156,8 +156,12 @@ const allActiveProfiles = async (req, res) => {
 const deleteProfile = async (req, res) => {
     const { id } = req.params;
     try {
-        const data = await Profile.findByIdAndDelete({ _id: id });
-        res.status(200).json({ success: true, message: " Student Profiles Deleted...", data: data });
+        const existingProfile = await Profile.findByIdAndDelete({ _id: id });
+        if (existingProfile) {
+            res.status(200).json({ success: true, message: "Student Profile Deleted...", data: data });
+        } else {
+            res.status(400).json({ success: false, message:  "Student Profiles Not Found..." });
+        }
     } catch (error) {
         return res.status(500).json({ success: false, message: "Server gone mad..." });
     }
