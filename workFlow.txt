@@ -1,3 +1,15 @@
+=== hold and active data get ==== 
+{ ishold: { $ne: false } } use kore thik na... 👉 এর মানে:
+যেগুলো false না — সবই নিয়ে আসবে মানে:
+✅ true
+✅ undefined
+✅ field নাই
+✅ null
+👉 শুধু false বাদ দিবে
+
+better to use {isHold: true } // hold dekhanor jonno  
+            {isHold: false } - active dekhanor jonno
+
 === Update work: =====
 terminal suggestion for update documants :
 (node:8619) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.

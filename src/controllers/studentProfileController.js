@@ -111,7 +111,7 @@ const holdProfile = async (req, res) => {
         existingProfile.save();
         res.status(200).json({ success: true, message: `${existingProfile.name} Profile has been Restricted...` })
     } catch (error) {
-        return res.status(500).json({ success: false, message: "Server gone mad..." });
+        res.status(500).json({ success: false, message: "Server gone mad..." });
         // console.log(error);
     }
 };
@@ -128,4 +128,30 @@ const activateProfile = async (req, res) => {
     }
 };
 
-module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile, holdProfile, activateProfile,   }
+const allHoldProfiles = async (req, res) => {
+    const { id } = req.params; // id dhore sob hold show korte chai..//
+    try {
+        const data = await Profile.find({ isHold: true });
+        console.log(data);
+        res.status(200).json({ success: true, message: "All Hold Student Profiles...", data: data });
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: "Server gone mad..." });
+        
+    }
+
+};
+const allActiveProfiles = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const data = await Profile.find({ isHold: false});
+        res.status(200).json({ success: true, message: "All active Student Profiles...", data:data });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." });
+    }
+
+};
+
+
+module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile, holdProfile, activateProfile, allHoldProfiles, allActiveProfiles   }
