@@ -153,5 +153,15 @@ const allActiveProfiles = async (req, res) => {
 
 };
 
+const deleteProfile = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await Profile.findByIdAndDelete({ _id: id });
+        res.status(200).json({ success: true, message: " Student Profiles Deleted...", data: data });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server gone mad..." });
+    }
+}
 
-module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile, holdProfile, activateProfile, allHoldProfiles, allActiveProfiles   }
+
+module.exports = { createProfile, getAllProfile, getSingleProfile, updateProfile, holdProfile, activateProfile, allHoldProfiles, allActiveProfiles, deleteProfile   }
